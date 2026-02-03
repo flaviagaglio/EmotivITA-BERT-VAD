@@ -1,0 +1,13 @@
+dataset: taskA/data/train_dominance.csv        # train (da Development set)
+testset: taskA/data/val_dominance.csv          # validation per early stopping (NON test ufficiale)
+target_col: D
+model_save_path: taskA/risultati/model_dominance.pth
+
+tokenizer:
+  name: dbmdz/bert-base-italian-cased
+
+training:
+  epochs: 8
+  batch_size: 16
+  learning_rate: 0.00002 # 2e-5 viene scambiato per una stringa
+  seed: 42

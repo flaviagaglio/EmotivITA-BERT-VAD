@@ -1,0 +1,15 @@
+Valutazione del modello EmoITA
+===============================
+
+V:
+  MAE = 0.3231
+  Pearson’s r = 0.7110
+
+A:
+  MAE = 0.3010
+  Pearson’s r = 0.5888
+
+D:
+  MAE = 0.2805
+  Pearson’s r = 0.5976
+

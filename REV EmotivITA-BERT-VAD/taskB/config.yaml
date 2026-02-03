@@ -1,0 +1,18 @@
+dataset:
+  train: "data/train.csv"
+  val: "data/val.csv"
+  test: "data/Test set.csv"
+  gold: "data/Test set - Gold labels.csv"
+
+# output (tutti in taskB/risultati/)
+predictions_path: "risultati/my_predictions.csv"
+results_path: "risultati/risultati.txt"
+
+tokenizer:
+  name: "dbmdz/bert-base-italian-cased"
+  max_len: 64
+
+params:
+  batch_size: 16
+  lr: 0.00003 #3e-5
+  num_epochs: 8
