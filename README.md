@@ -475,20 +475,49 @@ I path sotto `dataset` e per `predictions_path` / `results_path` sono relativi a
 - **Metriche**: per ogni dimensione (V, A, D) vengono riportati **MAE** (in scala 1–5) e **Pearson r** (correlazione con le gold).
 - **Task A**: tre file `model_*_results.txt` e grafico `comparativa_taskA.png`.
 - **Task B**: un file `risultati.txt` e grafico `comparativa_AB.png` (confronto con Task A).
-- I file `.pth` non sono versionati (in `.gitignore`); dopo il training si trovano in `taskA/risultati/` e `taskB/risultati/`.
+- I file `.pth` non sono presenti; dopo il training si trovano in `taskA/risultati/` e `taskB/risultati/`.
+
+---
+
+## Risultati ottenuti
+
+Di seguito i risultati ottenuti sui set di valutazione/test dopo training ed evaluation (valori riproducibili con la [pipeline completa](#-pipeline-completa)).
+
+### Task A — Tre modelli (single-target)
+
+| Dimensione | MAE | Pearson r |
+|------------|-----|-----------|
+| Valence (V) | 0.364 | 0.632 |
+| Arousal (A) | 0.310 | 0.557 |
+| Dominance (D) | 0.287 | 0.541 |
+
+### Task B — Un modello (multi-target)
+
+| Dimensione | MAE | Pearson r |
+|------------|-----|-----------|
+| Valence (V) | 0.323 | 0.711 |
+| Arousal (A) | 0.301 | 0.589 |
+| Dominance (D) | 0.281 | 0.598 |
+
+### Discussione
+
+- **Cosa abbiamo ottenuto**: correlazioni **Pearson r** nella fascia **0.54–0.71**; **MAE** tra **0.28 e 0.36** (su scala 1–5). Entrambi gli approcci raggiungono correlazioni moderate–buone con le gold labels e errori assoluti medi contenuti.
+- **Pattern**: Valence tende a MAE leggermente più alto nel Task A; nel Task B si osservano correlazioni più alte su Valence. Dominance ha MAE più basso in entrambi i task.
+- **Trade-off**: Task A usa tre modelli specializzati (tre training, file separati per dimensione); Task B usa un solo modello multi-output (un training, un unico file di risultati). I risultati dipendono da dataset, iperparametri e split; non si dichiara un “modello migliore” — i due approcci sono entrambi validi e riproducibili.
+
+I grafici comparativi (`comparativa_taskA.png`, `comparativa_AB.png`) visualizzano questi risultati; i valori numerici sono in `taskA/risultati/model_*_results.txt` e `taskB/risultati/risultati.txt`.
 
 ---
 
 ## Grafici e risultati
 
-Dopo aver eseguito training, evaluation e gli script comparativi, il progetto genera i seguenti grafici. Qui sotto sono mostrati come riferimento (le immagini compaiono dopo aver lanciato i rispettivi script).
+Dopo aver eseguito training, evaluation e gli script comparativi, il progetto genera i seguenti grafici. Qui sotto sono mostrati come riferimento.
 
 ### Task A — Comparativa Valence, Arousal, Dominance
 
 MAE e Pearson r per le tre dimensioni (un modello per dimensione). Generato con `python taskA/code/comparativa_taskA.py`.
 
 ![Comparativa Task A — MAE e Pearson r per V, A, D](taskA/risultati/comparativa_taskA.png)
-
 
 
 ### Task A vs Task B — Confronto metriche
@@ -507,6 +536,4 @@ Confronto diretto tra l’approccio a tre modelli (Task A) e l’approccio a un 
 - **EmoITA**: dataset EmoITA per emozioni in italiano (VAD)
 - **PyTorch**: [pytorch.org](https://pytorch.org/)
 - **Hugging Face Transformers**: [huggingface.co/transformers](https://huggingface.co/transformers/)
-
----
 
