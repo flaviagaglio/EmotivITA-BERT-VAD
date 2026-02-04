@@ -517,14 +517,16 @@ Dopo aver eseguito training, evaluation e gli script comparativi, il progetto ge
 
 MAE e Pearson r per le tre dimensioni (un modello per dimensione). Generato con `python taskA/code/comparativa_taskA.py`.
 
-![Comparativa Task A — MAE e Pearson r per V, A, D](taskA/risultati/comparativa_taskA.png)
+<img width="3000" height="1200" alt="comparativa_taskA" src="https://github.com/user-attachments/assets/df4a98a5-ae75-4396-9ebd-202eec1cdcf3" />
+
 
 
 ### Task A vs Task B — Confronto metriche
 
 Confronto diretto tra l’approccio a tre modelli (Task A) e l’approccio a un solo modello (Task B). Generato con `python taskB/code/comparativa_AB.py`.
 
-![Comparativa Task A vs Task B](taskB/risultati/comparativa_AB.png)
+<img width="3600" height="1500" alt="comparativa_AB" src="https://github.com/user-attachments/assets/fa455cbb-f799-4896-907a-a501791559ae" />
+
 
 
 
