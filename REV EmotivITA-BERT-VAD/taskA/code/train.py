@@ -161,7 +161,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-    '''eseguire con 
-    python taskA/code/train.py --config taskA/config_valence.yaml
-    python taskA/code/train.py --config taskA/config_arousal.yaml
-    python taskA/code/train.py --config taskA/config_dominance.yaml'''
