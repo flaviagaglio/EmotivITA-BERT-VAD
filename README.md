@@ -156,6 +156,7 @@ Dopo il setup, tutti i comandi vanno eseguiti con l’ambiente attivato.
 I dati EmoITA forniscono frasi in italiano annotate con **V, A, D** in scala 1–5.
 
 - **Development set**: usato per **train** e **validation** (split 80/20).
+- **Test set**: usato solo nel Task B
 - **Test set** (con gold labels): usato **solo** per la valutazione finale (nessun training).
 
 Formato atteso dei CSV:
@@ -244,6 +245,18 @@ python comparativa_taskA.py
 
 - Stampa una tabella con MAE e Pearson r per Valence, Arousal, Dominance.
 - Salva il grafico in `taskA/risultati/comparativa_taskA.png`.
+
+### Importante! 
+### Scelte Implementative
+Per il Task A, è stata adottata una strategia semplificata che utilizza direttamente 
+il test set con gold labels per la valutazione. 
+
+**Limite Riconosciuto:** la procedura adottata diverge da quella ufficiale della challenge, dove le 
+predizioni andrebbero effettuate sul test set senza labels. In un contesto 
+di competizione reale, sarebbe necessario implementare uno script di unione 
+delle predizioni.
+
+**Assenza di leakage**: Le gold labels sono state utilizzate esclusivamente per la valutazione finale, a modello già addestrato
 
 ---
 
