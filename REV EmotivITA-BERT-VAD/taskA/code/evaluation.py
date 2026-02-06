@@ -60,9 +60,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-'''
-Eseguire con:
-    python taskA/code/evaluation.py --config taskA/config_valence.yaml
-    python taskA/code/evaluation.py --config taskA/config_arousal.yaml
-    python taskA/code/evaluation.py --config taskA/config_dominance.yaml
-'''
