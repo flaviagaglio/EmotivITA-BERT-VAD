@@ -1,20 +1,16 @@
-"""
-Stampa la tabella dei risultati Task B leggendo da taskB/risultati/risultati.txt.
-Eseguibile da qualsiasi directory.
-"""
 import re
 from pathlib import Path
 
 import pandas as pd
 
-from _paths import path, TASKB_ROOT
+TASKB_ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
-    p = Path(TASKB_ROOT) / "risultati" / "risultati.txt"
+    p = TASKB_ROOT / "risultati" / "risultati.txt"
     if not p.exists():
-        print("File risultati non trovato:", p)
-        print("Eseguire prima: python taskB/code/evaluation.py")
+        print("Results file not found:", p)
+        print("Run first: python taskB/code/evaluation.py")
         return
 
     text = p.read_text(encoding="utf-8")
@@ -28,11 +24,7 @@ def main():
         line = line.strip()
         if line in ("V:", "A:", "D:"):
             if current_dim is not None and mae is not None:
-                rows.append({
-                    "Dimensione": dim_map[current_dim],
-                    "MAE": mae,
-                    "Pearson r": corr,
-                })
+                rows.append({"Dimension": dim_map[current_dim], "MAE": mae, "Pearson r": corr})
             current_dim = line.rstrip(":")
             mae = None
             corr = None
@@ -42,23 +34,19 @@ def main():
             if m:
                 mae = float(m.group(1))
         if current_dim and "Pearson" in line:
-            m = re.search(r"[\d.]+", line.split("=")[-1].strip())
+            m = re.search(r"-?[\d.]+", line.split("=")[-1].strip())
             if m:
                 corr = float(m.group(0))
 
     if current_dim is not None and mae is not None:
-        rows.append({
-            "Dimensione": dim_map[current_dim],
-            "MAE": mae,
-            "Pearson r": corr,
-        })
+        rows.append({"Dimension": dim_map[current_dim], "MAE": mae, "Pearson r": corr})
 
     if not rows:
-        print("Nessun risultato parsato da risultati.txt")
+        print("No results could be parsed from risultati.txt")
         return
 
     df = pd.DataFrame(rows)
-    print("\nTabella Task B:\n")
+    print("\nTask B results:\n")
     print(df.to_string(index=False))
 
 

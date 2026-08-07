@@ -1,5 +1,5 @@
-dataset: taskA/data/train_valence.csv          # train (da Development set)
-testset: taskA/data/val_valence.csv            # validation per early stopping (NON test ufficiale)
+dataset: taskA/data/train_valence.csv          # non usato in predict/evaluation
+testset: taskA/data/test_valence.csv           # TEST UFFICIALE con gold labels
 target_col: V
 model_save_path: taskA/risultati/model_valence.pth
 
@@ -11,3 +11,4 @@ training:
   batch_size: 16
   learning_rate: 0.00002 # 2e-5 viene scambiato per una stringa
   seed: 42
+  patience: 3

@@ -16,3 +16,5 @@ params:
   batch_size: 16
   lr: 0.00003 #3e-5
   num_epochs: 8
+  seed: 42
+  patience: 3
